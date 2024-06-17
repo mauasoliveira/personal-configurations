@@ -1,0 +1,15 @@
+import = [
+	"~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[font]
+builtin_box_drawing = false
+size                = 10
+
+[font.normal]
+# family = "OpenDyslexic Mono"
+family = "ProggyClean Nerd Font"
+style  = "Regular"
+
+# [cursor]
+# blinking = "Always"

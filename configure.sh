@@ -4,6 +4,17 @@
 source_dir="./config"
 target_dir="$HOME/.config"
 
+echo ZSH
+mkdir -p ~/.zsh_functions
+
+rm -f $HOME/.zshrc
+ln ./zshrc $HOME/.zshrc
+
+echo Alacritty configs
+
+mkdir -p $target_dir/alacritty
+curl -LO --output-dir $target_dir/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+
 # Function to create hard links, preserving directory structure
 create_links() {
     local src="$1"
