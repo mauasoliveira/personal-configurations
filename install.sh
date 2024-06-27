@@ -1,5 +1,5 @@
-#!/bin/bash
 
+#!/bin/bash
 # Install dependencies
 sudo apt update
 sudo apt install -y ripgrep fzf wget fontconfig zoxide tmux neovim tig
@@ -10,7 +10,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 echo "Installing NVM"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-FONT_NAME="UbuntuSans"
+FONT_NAME="SourceCodePro"
 echo "Installing $FONTNAME"
 if fc-list | grep -qi "$FONT_NAME"; then
     echo "The font '$FONT_NAME' is already installed."

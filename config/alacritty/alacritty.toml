@@ -7,7 +7,7 @@ builtin_box_drawing = false
 size                = 10
 
 [font.normal]
-family = "UbuntuSans Nerd Font"
+family = "SauceCodePro Nerd Font"
 style  = "Regular"
 
 # [cursor]
