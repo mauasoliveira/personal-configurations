@@ -108,10 +108,9 @@ fpath+=~/.zsh_functions
 #
 #
 # source <(fzf --zsh)
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # Custom alias
-alias cd="z "
 alias n="nvim "
 alias t="tmux "
 

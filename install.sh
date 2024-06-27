@@ -2,11 +2,16 @@
 
 # Install dependencies
 sudo apt update
-sudo apt install -y ripgrep fzf wget fontconfig zoxide tmux
+sudo apt install -y ripgrep fzf wget fontconfig zoxide tmux neovim tig
 
+echo "Installing Oh My ZSH"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "Installing NVM"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-FONT_NAME="OpenDyslexic"
+FONT_NAME="UbuntuSans"
+echo "Installing $FONTNAME"
 if fc-list | grep -qi "$FONT_NAME"; then
     echo "The font '$FONT_NAME' is already installed."
 else
