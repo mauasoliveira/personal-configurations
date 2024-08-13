@@ -19,8 +19,8 @@ return {
 				-- indent = { enable = true, disable = { "python" } },
 				incremental_selection = {
 					enable = true,
+					init_selection = "<c-space>",
 					keymaps = {
-						init_selection = "<c-space>",
 						node_incremental = "<c-space>",
 						scope_incremental = "<c-s>",
 						node_decremental = "<c-backspace>",
@@ -63,5 +63,6 @@ return {
 				},
 			})
 		end,
-	},
+	}
 }
+

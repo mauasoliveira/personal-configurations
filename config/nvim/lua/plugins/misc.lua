@@ -1,10 +1,14 @@
 -- Miscelaneous fun stuff
 return {
-	-- Comment with haste
-	{
-		"numToStr/Comment.nvim",
-		opts = {},
+
+	{ 'echasnovski/mini.nvim', version = '*' },
+	{ 'echasnovski/mini.icons', version = false, 
+		config=function()
+			require('mini.icons').setup()
+		end,
+
 	},
+
 	-- Move stuff with <M-j> and <M-k> in both normal and visual mode
 	{
 		"echasnovski/mini.move",

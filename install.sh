@@ -1,8 +1,8 @@
-
 #!/bin/bash
+
 # Install dependencies
 sudo apt update
-sudo apt install -y ripgrep fzf wget fontconfig zoxide tmux neovim tig
+sudo apt install -y git ripgrep fzf wget zoxide tmux neovim tig
 
 echo "Installing Oh My ZSH"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -10,19 +10,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 echo "Installing NVM"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
-FONT_NAME="SourceCodePro"
-echo "Installing $FONTNAME"
-if fc-list | grep -qi "$FONT_NAME"; then
-    echo "The font '$FONT_NAME' is already installed."
-else
-	echo "Installing $FONT_NAME font..."
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-	wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/$FONT_NAME.zip 
+nvm install --lts
+nvm use --lts
 
-	cur_dir=$(pwd)
-	cd ~/.local/share/fonts && unzip $FONT_NAME.zip && rm *Windows* && rm $FONT_NAME.zip && fc-cache -fv
-
-	cd $cur_dir
-fi
-
+echo "Installing TPM"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 

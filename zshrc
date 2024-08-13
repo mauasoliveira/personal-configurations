@@ -120,4 +120,7 @@ alias t="tmux "
 # Git related alias
 alias gs="git status; "
 alias commit="git add . ; git commit -am "
+alias update="git fetch --all ; git pull "
+
+alias pip="python3.12 -m pip "
 

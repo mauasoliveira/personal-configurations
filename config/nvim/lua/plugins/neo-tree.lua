@@ -12,7 +12,7 @@ return {
 			require("neo-tree").setup()
 			require("helpers.keys").map(
 				{ "n", "v" },
-				"<leader>e",
+				"<c-e>",
 				"<cmd>NeoTreeRevealToggle<cr>",
 				"Toggle file explorer"
 			)
