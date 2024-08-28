@@ -2,7 +2,7 @@
 
 # Install dependencies
 sudo apt update
-sudo apt install -y git ripgrep fzf wget zoxide tmux neovim tig
+sudo apt install -y git ripgrep fzf wget zoxide tmux neovim tig zsh openssh-server
 
 echo "Installing Oh My ZSH"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

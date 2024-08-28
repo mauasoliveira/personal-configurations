@@ -124,3 +124,12 @@ alias update="git fetch --all ; git pull "
 
 alias pip="python3.12 -m pip "
 
+# Docker things
+alias dcu="docker compose up "
+alias dcd="docker compose down "
+alias dce="docker compose exec -it "
+
+# Python
+alias venv="source venv/bin/activate"
+alias create_venv="python3 -m venv venv ; source venv/bin/activate "
+
