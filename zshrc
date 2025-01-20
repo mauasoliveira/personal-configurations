@@ -111,7 +111,7 @@ fpath+=~/.zsh_functions
 #
 #
 # source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 
 # Custom alias
 alias n="nvim "
