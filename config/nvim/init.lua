@@ -1,3 +1,6 @@
+--
+--
+--
 -- Handle plugins with lazy.nvim
 require("core.lazy")
 

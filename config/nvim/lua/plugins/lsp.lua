@@ -12,7 +12,8 @@ return {
 			},
 			"folke/neodev.nvim",
 			"RRethy/vim-illuminate",
-			"hrsh7th/cmp-nvim-lsp",
+            { "hrsh7th/cmp-nvim-lsp", lazy = false },
+            
 		},
 		config = function()
 			-- Set up Mason before anything else

@@ -96,13 +96,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# NVM configuration
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 # --- /// Custom configs 
 #
 
@@ -122,7 +115,7 @@ alias gs="git status; "
 alias commit="git add . ; git commit -am "
 alias update="git fetch --all ; git pull "
 
-alias pip="python3.12 -m pip "
+# alias pip="python3.12 -m pip "
 
 # Docker things
 alias dcu="docker compose up "
@@ -132,4 +125,14 @@ alias dce="docker compose exec -it "
 # Python
 alias venv="source venv/bin/activate"
 alias create_venv="python3 -m venv venv ; source venv/bin/activate "
+
+
+# NVM configuration
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
 

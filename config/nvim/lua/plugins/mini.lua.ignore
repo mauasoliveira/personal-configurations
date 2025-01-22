@@ -1,0 +1,12 @@
+return {
+    { 'echasnovski/mini.nvim', version = '*' },
+    { 'echasnovski/mini.pairs', version = '*' },
+    { 'echasnovski/mini-git', version = '*', main = 'mini.git' },
+    { 'echasnovski/mini.animate', version = '*' },
+    { 'echasnovski/mini.indentscope', version = '*' },
+    { 'echasnovski/mini.starter', version = '*' },
+    { 'echasnovski/mini.statusline', version = '*' },
+    { 'echasnovski/mini.icons', version = '*' },
+    { 'echasnovski/mini.tabline', version = '*' },
+    { 'echasnovski/mini.fuzzy', version = '*' },
+    }
