@@ -109,6 +109,7 @@ eval "$(zoxide init zsh)"
 # Custom alias
 alias n="nvim "
 alias t="tmux "
+alias l="lsd -lAh --color=always"
 
 # Git related alias
 alias gs="git status; "
@@ -134,5 +135,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-
+export LG_CONFIG_FILE="/home/mauricio/.config/lazygit/config.yml,/home/mauricio/Projects/Opensources/catppuccin/lazygit/themes-mergable/mocha/blue.yml"
