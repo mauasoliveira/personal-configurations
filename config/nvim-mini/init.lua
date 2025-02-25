@@ -1,4 +1,5 @@
--- Put this at the top of 'init.lua'
+-- [[ Starting the configuration of mini.nvim ]]
+--
 local path_package = vim.fn.stdpath('data') .. '/site'
 local mini_path = path_package .. '/pack/deps/start/mini.nvim'
 if not vim.loop.fs_stat(mini_path) then
