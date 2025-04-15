@@ -1,6 +1,7 @@
 -- Miscelaneous fun stuff
 return {
 
+	--[[
 	{ 'echasnovski/mini.nvim', version = '*' },
 	{ 'echasnovski/mini.icons', version = false, 
 		config=function()
@@ -8,7 +9,6 @@ return {
 		end,
 
 	},
-
 	-- Move stuff with <M-j> and <M-k> in both normal and visual mode
 	{
 		"echasnovski/mini.move",
@@ -16,6 +16,8 @@ return {
 			require("mini.move").setup()
 		end,
 	},
+	--]]
+	
 	-- Better buffer closing actions. Available via the buffers helper.
 	{
 		"kazhala/close-buffers.nvim",
@@ -24,5 +26,4 @@ return {
 		},
 	},
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	"tpope/vim-surround", -- Surround stuff with the ys-, cs-, ds- commands
 }

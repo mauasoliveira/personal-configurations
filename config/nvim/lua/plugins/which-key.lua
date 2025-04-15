@@ -2,9 +2,15 @@ return {
 	{
 		"folke/which-key.nvim",
 		event="VeryLazy",
-		opts = {
-		},
+		opts = { },
 		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
 			{ "<leader>b", group = "Debugging" },
 			{ "<leader>d", group = "Delete/Close" },
 			{ "<leader>f", group = "File" },
