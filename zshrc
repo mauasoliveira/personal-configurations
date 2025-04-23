@@ -98,10 +98,9 @@ source $ZSH/oh-my-zsh.sh
 
 # NVM configuration
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # --- /// Custom configs 
 #
@@ -112,6 +111,10 @@ fpath+=~/.zsh_functions
 # Home brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# OPEN Jdk
+export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@11/bin:$PATH"
+export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@11/include"
+
 #
 #
 # source <(fzf --zsh)
@@ -120,6 +123,9 @@ eval "$(zoxide init zsh)"
 # Custom alias
 alias n="nvim "
 alias t="tmux "
+alias mkcd='mkdir -p "$1" ; cd "$1"'
+alias mkz='mkdir -p "$1" ; z "$1"'
+
 
 # Python
 alias venv="source .venv/bin/activate"
@@ -128,12 +134,13 @@ alias venv="source .venv/bin/activate"
 alias gs="git status; "
 alias commit="git add . ; git commit -am "
 alias update="git fetch --all ; git pull "
-
+alias lg="lazygit "
+alias prod="git fetch --all ; git checkout production ; git pull"
+A
 # Docker things
 alias dcu="docker compose up "
 alias dcd="docker compose down "
 alias dce="docker compose exec -it "
 
 . "$HOME/.local/bin/env"
-export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@11/bin:$PATH"
-export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@11/include"
+

@@ -19,3 +19,10 @@ nvm use --lts
 echo "Installing TPM"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+echo "Installing dev tools"
+
+echo " > Hurl "
+VERSION=6.1.1
+curl --location --remote-name https://github.com/Orange-OpenSource/hurl/releases/download/$VERSION/hurl_${VERSION}_amd64.deb
+sudo apt update && sudo apt install ./hurl_${VERSION}_amd64.deb
+
