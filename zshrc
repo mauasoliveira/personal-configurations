@@ -112,6 +112,10 @@ fpath+=~/.zsh_functions
 # Home brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# OPEN Jdk
+export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@11/bin:$PATH"
+export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@11/include"
+
 #
 #
 # source <(fzf --zsh)
@@ -128,6 +132,7 @@ alias venv="source .venv/bin/activate"
 alias gs="git status; "
 alias commit="git add . ; git commit -am "
 alias update="git fetch --all ; git pull "
+alias lg="lazygit "
 
 # Docker things
 alias dcu="docker compose up "
@@ -135,5 +140,3 @@ alias dcd="docker compose down "
 alias dce="docker compose exec -it "
 
 . "$HOME/.local/bin/env"
-export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@11/bin:$PATH"
-export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@11/include"
