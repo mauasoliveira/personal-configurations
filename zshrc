@@ -108,6 +108,10 @@ export NVM_DIR="$HOME/.config/nvm"
 
 fpath+=~/.zsh_functions
 
+
+# Home brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 #
 #
 # source <(fzf --zsh)
@@ -117,19 +121,19 @@ eval "$(zoxide init zsh)"
 alias n="nvim "
 alias t="tmux "
 
+# Python
+alias venv="source .venv/bin/activate"
+
 # Git related alias
 alias gs="git status; "
 alias commit="git add . ; git commit -am "
 alias update="git fetch --all ; git pull "
-
-alias pip="python3.12 -m pip "
 
 # Docker things
 alias dcu="docker compose up "
 alias dcd="docker compose down "
 alias dce="docker compose exec -it "
 
-# Python
-alias venv="source venv/bin/activate"
-alias create_venv="python3 -m venv venv ; source venv/bin/activate "
-
+. "$HOME/.local/bin/env"
+export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@11/bin:$PATH"
+export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openjdk@11/include"
