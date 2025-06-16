@@ -136,7 +136,7 @@ alias commit="git add . ; git commit -am "
 alias update="git fetch --all ; git pull "
 alias lg="lazygit "
 alias prod="git fetch --all ; git checkout production ; git pull"
-A
+
 # Docker things
 alias dcu="docker compose up "
 alias dcd="docker compose down "
