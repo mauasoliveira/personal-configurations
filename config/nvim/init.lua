@@ -271,6 +271,7 @@ require("lazy").setup({
 
 			-- Useful for getting pretty icons, but requires a Nerd Font.
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			{ "nvim-telescope/telescope-media-files.nvim" },
 		},
 		config = function()
 			-- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -307,6 +308,14 @@ require("lazy").setup({
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
+					},
+
+					media_files = {
+						-- filetypes whitelist
+						-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+						filetypes = { "png", "webp", "jpg", "jpeg" },
+						-- find command (defaults to `fd`)
+						find_cmd = "rg",
 					},
 				},
 			})
@@ -819,7 +828,54 @@ require("lazy").setup({
 			require("mini.surround").setup()
 
 			require("mini.pairs").setup()
-			require("mini.starter").setup()
+
+			-- using the mini plugins
+			require("mini.sessions").setup({
+				-- Whether to read latest session if Neovim opened without file arguments
+				autoread = false,
+				-- Whether to write current session before quitting Neovim
+				autowrite = false,
+				-- Directory where global sessions are stored (use `''` to disable)
+				directory = "~/.vim/sessions", --<"session" subdir of user data directory from |stdpath()|>,
+				-- File for local session (use `''` to disable)
+				file = "", -- 'Session.vim',
+			})
+
+			local header_art = [[
+   ---------------------------.
+ `/""""/""""/|""|'|""||""|   ' \.
+ /    /    / |__| |__||__|      |
+/----------=====================|
+| \  /V\  /    _.               |
+|()\ \W/ /()   _            _   |
+|   \   /     / \          / \  |-( )
+=C========C==_| ) |--------| ) _/==] _-{_}_)
+ \_\_/__..  \_\_/_ \_\_/ \_\_/__.__.
+      ]]
+			local mini_starter = require("mini.starter")
+			mini_starter.setup({
+				-- evaluate_single = true,
+				items = {
+					mini_starter.sections.sessions(10, true),
+					mini_starter.sections.recent_files(10, true),
+					mini_starter.sections.builtin_actions(),
+				},
+				content_hooks = {
+					function(content)
+						local blank_content_line = { { type = "empty", string = "" } }
+						local section_coords = mini_starter.content_coords(content, "section")
+						-- Insert backwards to not affect coordinates
+						for i = #section_coords, 1, -1 do
+							table.insert(content, section_coords[i].line + 1, blank_content_line)
+						end
+						return content
+					end,
+					mini_starter.gen_hook.adding_bullet("» "),
+					mini_starter.gen_hook.aligning("center", "center"),
+				},
+				header = header_art,
+				footer = "",
+			})
 
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
@@ -859,6 +915,7 @@ require("lazy").setup({
 				"vim",
 				"vimdoc",
 				"python",
+				"html",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -899,7 +956,7 @@ require("lazy").setup({
 	--    This is the easiest way to modularize your config.
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-	-- { import = 'custom.plugins' },
+	{ import = "custom.plugins" },
 	--
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
 	-- Or use telescope!
