@@ -191,6 +191,7 @@ require("lazy").setup({
 	-- options to `gitsigns.nvim`.
 	--
 	-- See `:help gitsigns` to understand what the configuration keys do
+	--[[
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -203,6 +204,7 @@ require("lazy").setup({
 			},
 		},
 	},
+  --]]
 
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
@@ -809,6 +811,7 @@ require("lazy").setup({
 		opts = { signs = false },
 	},
 
+	-- // MINI
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
@@ -894,8 +897,13 @@ require("lazy").setup({
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
+
+			require("mini.diff").setup()
+			require("mini.git").setup()
 		end,
 	},
+	-- // / MINI
+	--
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -915,7 +923,6 @@ require("lazy").setup({
 				"vim",
 				"vimdoc",
 				"python",
-				"html",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
