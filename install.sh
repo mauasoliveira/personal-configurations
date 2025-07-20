@@ -2,7 +2,7 @@
 
 # Install dependencies
 sudo apt update
-sudo apt install -y git ripgrep fzf wget zoxide tmux neovim tig zsh openssh-server fd-find
+sudo apt install -y git ripgrep fzf wget zoxide tmux neovim tig zsh openssh-server fd-find lua5.1 python3.12-venv podman podman-compose podman-docker 
 
 # echo "Installing NVM"
 # wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -13,6 +13,12 @@ sudo apt install -y git ripgrep fzf wget zoxide tmux neovim tig zsh openssh-serv
 #
 echo "Installing TPM"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+echo "Installing Homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+echo "Install tools"
+brew install lazygit tako8ki/tap/gobang
 
 # echo " > Hurl "
 # VERSION=6.1.1

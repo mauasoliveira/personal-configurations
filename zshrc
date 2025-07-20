@@ -150,4 +150,5 @@ alias dce="docker compose exec -it "
 source ~/GOMD
 alias gomd="tmux attach-session -t GOMD"
 
+source ~/CUSTOM
 
