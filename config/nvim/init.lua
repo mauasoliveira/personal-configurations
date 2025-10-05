@@ -798,7 +798,12 @@ require("lazy").setup({
 	{
 		"catppuccin/nvim",
 		priority = 1000,
-		config = function()
+		opts = {
+			term_colors = true,
+			transparent_background = true,
+		},
+		config = function(_, opts)
+			require("catppuccin").setup(opts)
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
@@ -904,6 +909,25 @@ require("lazy").setup({
 	},
 	-- // / MINI
 	--
+	{
+		"sindrets/diffview.nvim",
+		--[[
+    --
+    --      { "n", "[x",          actions.prev_conflict,                  { desc = "In the merge-tool: jump to the previous conflict" } },
+      { "n", "]x",          actions.next_conflict,                  { desc = "In the merge-tool: jump to the next conflict" } },
+      { "n", "<leader>co",  actions.conflict_choose("ours"),        { desc = "Choose the OURS version of a conflict" } },
+      { "n", "<leader>ct",  actions.conflict_choose("theirs"),      { desc = "Choose the THEIRS version of a conflict" } },
+      { "n", "<leader>cb",  actions.conflict_choose("base"),        { desc = "Choose the BASE version of a conflict" } },
+      { "n", "<leader>ca",  actions.conflict_choose("all"),         { desc = "Choose all the versions of a conflict" } },
+      { "n", "dx",          actions.conflict_choose("none"),        { desc = "Delete the conflict region" } },
+      { "n", "<leader>cO",  actions.conflict_choose_all("ours"),    { desc = "Choose the OURS version of a conflict for the whole file" } },
+      { "n", "<leader>cT",  actions.conflict_choose_all("theirs"),  { desc = "Choose the THEIRS version of a conflict for the whole file" } },
+      { "n", "<leader>cB",  actions.conflict_choose_all("base"),    { desc = "Choose the BASE version of a conflict for the whole file" } },
+      { "n", "<leader>cA",  actions.conflict_choose_all("all"),     { desc = "Choose all the versions of a conflict for the whole file" } },
+
+    --
+    --]]
+	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",

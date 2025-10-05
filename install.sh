@@ -4,6 +4,8 @@
 sudo apt update
 sudo apt install -y git ripgrep fzf wget zoxide tmux neovim tig zsh openssh-server fd-find lua5.1 python3.12-venv podman podman-compose podman-docker 
 
+git config --global pull.rebase false
+
 # echo "Installing NVM"
 # wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
