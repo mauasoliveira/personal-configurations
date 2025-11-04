@@ -809,12 +809,32 @@ require("lazy").setup({
 	},
 
 	-- Highlight todo, notes, etc in comments
+	--[[
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
+	},]]
+	--
+
+	-- Colorviewer
+	--[[
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({
+				names = false,
+				"css",
+				"javascript",
+				html = {
+					mode = "foreground",
+				},
+			})
+		end,
 	},
+  ]]
+	--
 
 	-- // MINI
 	{ -- Collection of various small independent plugins/modules
@@ -833,7 +853,16 @@ require("lazy").setup({
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			require("mini.surround").setup({
+				mappings = {
+					add = "<C-s>a", -- Add surrounding in Normal and Visual modes
+					delete = "<C-s>d", -- Delete surrounding
+					find = "<C-s>f", -- Find surrounding (to the right)
+					find_left = "<C-s>F", -- Find surrounding (to the left)
+					highlight = "<C-s>h", -- Highlight surrounding
+					replace = "<C-s>r", -- Replace surrounding
+				},
+			})
 
 			require("mini.pairs").setup()
 
@@ -860,6 +889,7 @@ require("lazy").setup({
 =C========C==_| ) |--------| ) _/==] _-{_}_)
  \_\_/__..  \_\_/_ \_\_/ \_\_/__.__.
       ]]
+			-- local header_art = vim.fn.system('curl "wttr.in/Curitiba?T"')
 			local mini_starter = require("mini.starter")
 			mini_starter.setup({
 				-- evaluate_single = true,
@@ -905,6 +935,19 @@ require("lazy").setup({
 
 			require("mini.diff").setup()
 			require("mini.git").setup()
+			local hipatterns = require("mini.hipatterns")
+			hipatterns.setup({
+				highlighters = {
+					-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+					fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+					hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+					todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+					note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+
+					-- Highlight hex color strings (`#rrggbb`) using that color
+					hex_color = hipatterns.gen_highlighter.hex_color(),
+				},
+			})
 		end,
 	},
 	-- // / MINI
