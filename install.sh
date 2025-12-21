@@ -20,7 +20,7 @@ echo "Installing Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Install tools"
-brew install lazygit tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
+brew install lazygit opencode #  tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
 
 # echo " > Hurl "
 # VERSION=6.1.1

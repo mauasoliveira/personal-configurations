@@ -128,7 +128,6 @@ alias bat="batcat"
 alias mkcd="mkdir -p $1 ; cd $1"
 alias mkz="mkdir -p $1 ; z $1"
 
-
 # Python
 alias venv="source .venv/bin/activate"
 
@@ -137,7 +136,18 @@ alias gs="git status; "
 alias commit="git add . ; git commit -am "
 alias update="git fetch --all ; git pull "
 alias lg="lazygit "
+alias main="git fetch --all ; git checkout main ; git pull"
+alias mainapp="git fetch --all ; git checkout main-app ; git pull"
 alias prod="git fetch --all ; git checkout production ; git pull"
+alias developapp="git fetch --all ; git checkout develop-app ; git pull"
+alias develop="git fetch --all ; git checkout develop ; git pull"
+alias staging="git fetch --all ; git checkout staging ; git pull"
+
+
+# Yarn
+alias ybuild="rm -rf dist ; yarn build"
+alias yinstall="rm -rf node_modules ; yarn install"
+
 
 # Docker things
 export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
@@ -147,8 +157,10 @@ alias dce="docker compose exec -it "
 
 # . "$HOME/.local/bin/env"
 
-source ~/GOMD
-alias gomd="tmux attach-session -t GOMD"
+export COREPACK_ENABLE_AUTO_PIN=0
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
+source ~/GOMD
 source ~/CUSTOM
+source ~/API_KEYS
 

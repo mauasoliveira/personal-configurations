@@ -46,6 +46,12 @@ vim.schedule(function()
 end)
 --]]
 
+-- Tabs
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -795,6 +801,8 @@ require("lazy").setup({
 		},
 	},
 
+	{ "Mofiqul/dracula.nvim" },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	{
 		"catppuccin/nvim",
 		priority = 1000,
@@ -935,6 +943,8 @@ require("lazy").setup({
 
 			require("mini.diff").setup()
 			require("mini.git").setup()
+			require("mini.files").setup()
+
 			local hipatterns = require("mini.hipatterns")
 			hipatterns.setup({
 				highlighters = {
@@ -971,6 +981,20 @@ require("lazy").setup({
     --
     --]]
 	},
+	{ "tpope/vim-abolish" },
+
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
+
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -1060,3 +1084,5 @@ require("lazy").setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+-- vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("dracula")

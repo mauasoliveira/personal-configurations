@@ -6,6 +6,8 @@ return {
 			"nvim-lua/plenary.nvim",
 			-- "ravitemer/mcphub.nvim",
 		},
+		tag = "v17.33.0",
+		version = "v17.33.0",
 	},
 	{
 		"ravitemer/mcphub.nvim",
@@ -21,6 +23,7 @@ return {
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown", "codecompanion" },
 	},
+	--[[
 	{
 		"HakonHarnes/img-clip.nvim",
 		opts = {
@@ -33,4 +36,5 @@ return {
 			},
 		},
 	},
+	--]]
 }
