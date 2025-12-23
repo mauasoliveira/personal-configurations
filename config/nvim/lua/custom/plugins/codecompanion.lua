@@ -8,6 +8,49 @@ return {
 		},
 		tag = "v17.33.0",
 		version = "v17.33.0",
+		config = function()
+			require("codecompanion").setup({
+				adapters = {
+					acp = {
+						opencode = function()
+							return require("codecompanion.adapters").extend("opencode", {
+								commands = {
+									-- The default uses the opencode/config.json value
+									default = {
+										"opencode",
+										"acp",
+									},
+									big_pickle = {
+										"opencode",
+										"acp",
+										"-m",
+										"big-pickle",
+									},
+									kimi_k2 = {
+										"opencode",
+										"acp",
+										"-m",
+										"kimi-k2",
+									},
+									kimi_k2_thinking = {
+										"opencode",
+										"acp",
+										"-m",
+										"kimi-k2-thinking",
+									},
+									qwen3_coder = {
+										"opencode",
+										"acp",
+										"-m",
+										"qwen3-coder",
+									},
+								},
+							})
+						end,
+					},
+				},
+			})
+		end,
 	},
 	{
 		"ravitemer/mcphub.nvim",
