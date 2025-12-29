@@ -164,3 +164,4 @@ source ~/GOMD
 source ~/CUSTOM
 source ~/API_KEYS
 
+export PATH="/home/mauricio/.local/bin:$PATH"
