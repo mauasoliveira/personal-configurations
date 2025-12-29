@@ -393,6 +393,9 @@ require("lazy").setup({
 			{ "williamboman/mason.nvim", opts = {} },
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-emoji",
+			"hrsh7th/cmp-nvim-lsp",
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -658,6 +661,14 @@ require("lazy").setup({
 					end,
 				},
 			})
+
+			--[[
+			-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+      --]]
+
+			-- End LSP config
 		end,
 	},
 
@@ -998,12 +1009,12 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		-- main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
 				"bash",
-				-- "c",
+				"c",
 				"diff",
 				"html",
 				"lua",
@@ -1014,6 +1025,8 @@ require("lazy").setup({
 				"vim",
 				"vimdoc",
 				"python",
+				"typescript",
+				"yaml",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,

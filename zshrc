@@ -164,3 +164,5 @@ source ~/GOMD
 source ~/CUSTOM
 source ~/API_KEYS
 
+export PATH="/home/mauricio/.local/bin:$PATH"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/cattpuccin.yml"
