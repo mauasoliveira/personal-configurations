@@ -992,6 +992,7 @@ require("lazy").setup({
     --
     --]]
 	},
+	{ "sitiom/nvim-numbertoggle" },
 	{ "tpope/vim-abolish" },
 
 	{
