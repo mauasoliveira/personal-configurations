@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Install dependencies
-sudo apt update sudo apt upgrade -y
+sudo apt update 
+sudo apt upgrade -y
 
 # Neovim Dependencies
 sudo apt-get install ninja-build gettext cmake curl build-essential git
@@ -33,16 +34,18 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Install tools"
-brew install lazygit opencode # tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
+brew install fastfetch lazygit opencode # tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
 
 # echo " > Hurl " VERSION=6.1.1 curl --location --remote-name 
 # https://github.com/Orange-OpenSource/hurl/releases/download/$VERSION/hurl_${VERSION}_amd64.deb 
 # sudo apt update && sudo apt install 
 # ./hurl_${VERSION}_amd64.deb
 
+echo "PENDING"
+echo ">> HURL"
+echo ">> NVM"
+
 echo "Installing Oh My ZSH"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-echo "PENDING" echo "HURL" echo "NVM"
 
 # snap install yazi --classic

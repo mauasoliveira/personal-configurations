@@ -393,6 +393,9 @@ require("lazy").setup({
 			{ "williamboman/mason.nvim", opts = {} },
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-emoji",
+			"hrsh7th/cmp-nvim-lsp",
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -658,6 +661,14 @@ require("lazy").setup({
 					end,
 				},
 			})
+
+			--[[
+			-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+      --]]
+
+			-- End LSP config
 		end,
 	},
 
@@ -981,6 +992,7 @@ require("lazy").setup({
     --
     --]]
 	},
+	{ "sitiom/nvim-numbertoggle" },
 	{ "tpope/vim-abolish" },
 
 	{
