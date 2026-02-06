@@ -34,7 +34,14 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Install tools"
-brew install fastfetch lazygit opencode # tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
+brew install fastfetch lazygit opencode sesh # tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
+
+# Generate completion script
+sesh completion zsh > _sesh
+
+# Install system-wide (recommended)
+sudo mkdir -p /usr/local/share/zsh/site-functions
+sudo cp _sesh /usr/local/share/zsh/site-functions/
 
 # echo " > Hurl " VERSION=6.1.1 curl --location --remote-name 
 # https://github.com/Orange-OpenSource/hurl/releases/download/$VERSION/hurl_${VERSION}_amd64.deb 

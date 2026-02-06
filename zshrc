@@ -86,3 +86,5 @@ eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 
 # zprof
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
