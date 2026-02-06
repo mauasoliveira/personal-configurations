@@ -147,6 +147,7 @@ alias staging="git fetch --all ; git checkout staging ; git pull"
 # Yarn
 alias ybuild="rm -rf dist ; yarn build"
 alias yinstall="rm -rf node_modules ; yarn install"
+alias yb="ybuild && exit"
 
 
 # Docker things
