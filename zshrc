@@ -1,19 +1,24 @@
 # # Add this to the TOP of your .zshrc
-# zmodload zsh/zprof
+ # zmodload zsh/zprof
 
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="sorin"
-
-DISABLE_AUTO_UPDATE="true"
 DISABLE_COMPFIX="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 autoload -Uz compinit
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+# if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
     compinit
 else
     compinit -C
 fi
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
 plugins=(
 	git
 )
@@ -26,7 +31,6 @@ source $ZSH/oh-my-zsh.sh
 #
 
 fpath+=~/.zsh_functions
-
 
 # Home brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -80,11 +84,19 @@ source ~/CUSTOM
 source ~/API_KEYS
 
 export PATH="/home/mauricio/.local/bin:$PATH"
-export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/cattpuccin.yml"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/catppuccin.yml"
 
 eval "$(starship init zsh)"
-eval "$(mise activate zsh)"
+#
+# Instead of loading mise directly, lazy load it
+if command -v mise >/dev/null; then
+  # Add mise to path without running hooks immediately
+  eval "$(mise activate zsh --shims)"
+fi
 
-# zprof
+
+
 fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
+
+# zprof
