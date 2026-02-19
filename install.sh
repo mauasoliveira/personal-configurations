@@ -54,6 +54,9 @@ sudo cp _sesh /usr/local/share/zsh/site-functions/
 # sudo apt update && sudo apt install 
 # ./hurl_${VERSION}_amd64.deb
 
+# Nord Kitty Theme
+curl https://raw.githubusercontent.com/m8mble/nord-kitty/master/nord-kitty.conf > "${HOME}/.config/kitty/.nord-kitty.conf"
+
 echo "PENDING"
 echo ">> HURL"
 echo ">> NVM"

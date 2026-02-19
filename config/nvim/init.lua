@@ -812,8 +812,6 @@ require("lazy").setup({
 		},
 	},
 
-	{ "Mofiqul/dracula.nvim" },
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	{
 		"catppuccin/nvim",
 		priority = 1000,
@@ -825,6 +823,10 @@ require("lazy").setup({
 			require("catppuccin").setup(opts)
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
+	},
+	{
+		"arcticicestudio/nord-vim",
+		priority = 990,
 	},
 
 	-- Highlight todo, notes, etc in comments
@@ -1101,3 +1103,4 @@ require("lazy").setup({
 -- vim: ts=2 sts=2 sw=2 et
 -- vim.cmd.colorscheme("gruvbox")
 -- vim.cmd.colorscheme("dracula")
+vim.cmd.colorscheme("nord")
