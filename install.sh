@@ -7,16 +7,21 @@ sudo apt upgrade -y
 # Neovim Dependencies
 sudo apt-get install ninja-build gettext cmake curl build-essential git
 
-sudo apt install -y ripgrep fzf wget zoxide tmux tig zsh openssh-server fd-find lua5.1 luarocks podman mkcert docker-cli docker-compose libnss3-tools bat starship
+sudo apt install -y ripgrep fzf wget zoxide tmux tig zsh openssh-server fd-find lua5.1 luarocks podman mkcert docker-cli docker-compose libnss3-tools bat starship ffmpeg 7zip jq poppler-utils imagemagick
+
 # python3
 
+git config --global core.editor nvim
 git config --global pull.rebase false
 
 mkdir -p ~/Documents/Projects/Opensources/
-git clone https://github.com/neovim/neovim.git cd ~/Documents/Projetcs/Opensources/neovim
+cd ~/Documents/Projetcs/Opensources/
+git clone https://github.com/neovim/neovim.git 
 cd ~/Documents/Projects/Opensources/neovim
 make CMAKE_BUILD_TYPE=Release
 sudo make install
+
+cd ~
 
 echo "Installing MISE"
 sudo install -dm 755 /etc/apt/keyrings
@@ -37,6 +42,7 @@ echo "Install tools"
 brew install fastfetch lazygit opencode sesh # tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
 
 # Generate completion script
+cd ~ 
 sesh completion zsh > _sesh
 
 # Install system-wide (recommended)
@@ -53,6 +59,6 @@ echo ">> HURL"
 echo ">> NVM"
 
 echo "Installing Oh My ZSH"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# snap install yazi --classic
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh

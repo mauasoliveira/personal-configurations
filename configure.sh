@@ -10,6 +10,9 @@ mkdir -p ~/.zsh_functions
 rm -f $HOME/.zshrc
 ln ./zshrc $HOME/.zshrc
 
+rm -f $HOME/.zimrc
+ln ./zimrc $HOME/.zimrc
+
 rm -f $HOME/.tmux.conf
 ln ./tmux.conf $HOME/.tmux.conf
 

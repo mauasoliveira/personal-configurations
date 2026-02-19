@@ -1,53 +1,148 @@
-# # Add this to the TOP of your .zshrc
- # zmodload zsh/zprof
-
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="sorin"
-DISABLE_COMPFIX="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-autoload -Uz compinit
-# if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-    compinit
-else
-    compinit -C
-fi
-
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.cache/zsh
-zstyle ':completion:*:functions' ignored-patterns '_*'
-
-plugins=(
-	git
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-# 
-# --- /// Custom configs 
+# Start configuration added by Zim Framework install {{{
+#
+# User configuration sourced by interactive shells
 #
 
-fpath+=~/.zsh_functions
+# -----------------
+# Zsh configuration
+# -----------------
+
+#
+# History
+#
+
+# Remove older command from the history if a duplicate is to be added.
+setopt HIST_IGNORE_ALL_DUPS
+
+#
+# Input/output
+#
+
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+# bindkey -v
+
+# Prompt for spelling correction of commands.
+#setopt CORRECT
+
+# Customize spelling correction prompt.
+#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+
+# Remove path separator from WORDCHARS.
+WORDCHARS=${WORDCHARS//[\/]}
+
+# --------------------
+# Module configuration
+# --------------------
+
+#
+# git
+#
+
+# Set a custom prefix for the generated aliases. The default prefix is 'G'.
+#zstyle ':zim:git' aliases-prefix 'g'
+
+#
+# input
+#
+
+# Append `../` to your input for each `.` you type after an initial `..`
+#zstyle ':zim:input' double-dot-expand yes
+
+#
+# termtitle
+#
+
+# Set a custom terminal title format using prompt expansion escape sequences.
+# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
+# If none is provided, the default '%n@%m: %~' is used.
+#zstyle ':zim:termtitle' format '%1~'
+
+#
+# zsh-autosuggestions
+#
+
+# Disable automatic widget re-binding on each precmd. This can be set when
+# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
+# ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+#
+# zsh-syntax-highlighting
+#
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
+
+# ------------------
+# Initialize modules
+# ------------------
+
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init
+fi
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+# }}} End configuration added by Zim Framework install
+
+# Created by newuser for 5.9
+#
+
+# Zoxide
+eval "$(zoxide init zsh)"
 
 # Home brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-#
-# source <(fzf --zsh)
-eval "$(zoxide init zsh)"
+# Node config
+export COREPACK_ENABLE_AUTO_PIN=0
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
+# Instead of loading mise directly, lazy load it
+if command -v mise >/dev/null; then
+  # Add mise to path without running hooks immediately
+  eval "$(mise activate zsh --shims)"
+fi
+
+# Starship
+eval "$(starship init zsh)"
+
+export PATH="/home/mauricio/.local/bin:$PATH"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/catppuccin.yml"
+
+# ----------
+# Aliases
+# ----------
+#
 # Custom alias
 alias n="nvim "
 alias t="tmux "
 alias bat="batcat"
-alias mkcd="mkdir -p $1 ; cd $1"
-alias mkz="mkdir -p $1 ; z $1"
+# alias mkcd="mkdir -p $1 ; cd $1"
+# alias mkz="mkdir -p $1 ; z $1"
 
 # Python
-alias venv="source .venv/bin/activate"
+# alias venv="source .venv/bin/activate"
 
 # Git related alias
 alias gs="git status; "
@@ -61,12 +156,10 @@ alias developapp="git fetch --all ; git checkout develop-app ; git pull"
 alias develop="git fetch --all ; git checkout develop ; git pull"
 alias staging="git fetch --all ; git checkout staging ; git pull"
 
-
 # Yarn
 alias ybuild="rm -rf dist ; yarn build"
 alias yinstall="rm -rf node_modules ; yarn install"
 alias yb="ybuild && exit"
-
 
 # Docker things
 export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
@@ -74,29 +167,7 @@ alias dcu="docker compose up "
 alias dcd="docker compose down "
 alias dce="docker compose exec -it "
 
-# . "$HOME/.local/bin/env"
-
-export COREPACK_ENABLE_AUTO_PIN=0
-export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
 
 source ~/GOMD
-source ~/CUSTOM
 source ~/API_KEYS
 
-export PATH="/home/mauricio/.local/bin:$PATH"
-export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/catppuccin.yml"
-
-eval "$(starship init zsh)"
-#
-# Instead of loading mise directly, lazy load it
-if command -v mise >/dev/null; then
-  # Add mise to path without running hooks immediately
-  eval "$(mise activate zsh --shims)"
-fi
-
-
-
-fpath=(~/.zsh/completions $fpath)
-autoload -U compinit && compinit
-
-# zprof
