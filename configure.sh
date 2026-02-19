@@ -13,19 +13,19 @@ ln ./zshrc $HOME/.zshrc
 rm -f $HOME/.zimrc
 ln ./zimrc $HOME/.zimrc
 
+echo TMUX
 rm -f $HOME/.tmux.conf
 ln ./tmux.conf $HOME/.tmux.conf
 
-# echo Alacritty configs
-
-# mkdir -p $target_dir/alacritty
-# curl -LO --output-dir $target_dir/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+echo KITTY
+git clone --depth=1 https://github.com/ghsable/kitty-gruvbox.git ~/.config/kitty/kitty-gruvbox
 
 # Function to create hard links, preserving directory structure
 create_links() {
     local src="$1"
     local tgt="$2"
 
+    echo $src
     find "$src" -type d | while read -r dir; do
         mkdir -p "$tgt/${dir#$src/}"
     done

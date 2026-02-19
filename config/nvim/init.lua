@@ -812,7 +812,6 @@ require("lazy").setup({
 		},
 	},
 
-	{ "Mofiqul/dracula.nvim" },
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	{
 		"catppuccin/nvim",
@@ -835,24 +834,6 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},]]
-	--
-
-	-- Colorviewer
-	--[[
-	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup({
-				names = false,
-				"css",
-				"javascript",
-				html = {
-					mode = "foreground",
-				},
-			})
-		end,
-	},
-  ]]
 	--
 
 	-- // MINI
@@ -1099,5 +1080,5 @@ require("lazy").setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
--- vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("gruvbox")
 -- vim.cmd.colorscheme("dracula")
