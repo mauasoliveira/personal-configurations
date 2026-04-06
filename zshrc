@@ -160,13 +160,14 @@ alias staging="git fetch --all ; git checkout staging ; git pull"
 alias ybuild="rm -rf dist ; yarn build"
 alias yinstall="rm -rf node_modules ; yarn install"
 alias yb="ybuild && exit"
+alias ydev="clear ; rm -rf .next ; yarn dev:https "
+alias yu="yarn upgrade "
 
 # Docker things
 export DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}')
 alias dcu="docker compose up "
 alias dcd="docker compose down "
 alias dce="docker compose exec -it "
-
 
 source ~/GOMD
 source ~/API_KEYS

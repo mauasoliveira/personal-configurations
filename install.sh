@@ -39,7 +39,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Install tools"
-brew install fastfetch lazygit opencode sesh # tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
+brew install fastfetch lazygit opencode sesh hledger # tako8ki/tap/gobang mhzawadi/cbonsai/cbonsai
 
 # Generate completion script
 cd ~ 
