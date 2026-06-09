@@ -62,3 +62,6 @@ echo "Installing Oh My ZSH"
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+
+echo " TODO: Zed Installation"
+# https://zed.dev/docs/development/linux

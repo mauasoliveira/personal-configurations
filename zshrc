@@ -158,7 +158,7 @@ alias staging="git fetch --all ; git checkout staging ; git pull"
 
 # Yarn
 alias ybuild="rm -rf dist ; yarn build"
-alias yinstall="rm -rf node_modules ; yarn install"
+alias yinstall="rm -rf node_modules ; yarn install --frozen-lockfile"
 alias yb="ybuild && exit"
 alias ydev="clear ; rm -rf .next ; yarn dev:https "
 alias yu="yarn upgrade "
