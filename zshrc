@@ -127,7 +127,6 @@ fi
 # Starship
 eval "$(starship init zsh)"
 
-export PATH="/home/mauricio/.local/bin:$PATH"
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/catppuccin.yml"
 
 # ----------
@@ -169,6 +168,9 @@ alias dcu="docker compose up "
 alias dcd="docker compose down "
 alias dce="docker compose exec -it "
 
+export EDITOR="nvim"
+
+export PATH="/home/mauricio/.local/bin:/usr/local/go/bin:$PATH"
+
 source ~/GOMD
 source ~/API_KEYS
-
