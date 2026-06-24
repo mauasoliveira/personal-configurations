@@ -16,6 +16,12 @@ zmodule input
 zmodule termtitle
 # Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
+# FZF
+zmodule fzf
+# SSH
+zmodule ssh 
+# magic enter
+zmodule magic-enter
 
 # <-- Normally new modules should be added here. Check each module documentation
 # for any caveats.
@@ -49,7 +55,7 @@ zmodule completion
 zmodule zsh-users/zsh-syntax-highlighting
 # Fish-like history search for Zsh, must be sourced after
 # zsh-users/zsh-syntax-highlighting.
-zmodule zsh-users/zsh-history-substring-search
+# zmodule zsh-users/zsh-history-substring-search
 # Fish-like autosuggestions for Zsh. Add the following to your ~/.zshrc to boost
 # performance: ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # zmodule zsh-users/zsh-autosuggestions

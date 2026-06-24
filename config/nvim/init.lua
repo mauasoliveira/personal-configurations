@@ -1028,6 +1028,7 @@ require("lazy").setup({
 				"python",
 				"typescript",
 				"yaml",
+				"hurl",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,

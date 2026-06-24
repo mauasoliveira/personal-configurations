@@ -140,6 +140,9 @@ alias bat="batcat"
 # alias mkcd="mkdir -p $1 ; cd $1"
 # alias mkz="mkdir -p $1 ; z $1"
 
+# Builds
+alias build_nvim="sudo make distclean ; make CMAKE_BUILD_TYPE=RelWithDebInfo ; sudo make install "
+
 # Python
 # alias venv="source .venv/bin/activate"
 
